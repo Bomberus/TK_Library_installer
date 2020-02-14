@@ -80,7 +80,4 @@ def dnd_install():
 
   print("tkdnd installed!")
   
-  version = dnd_installed()
-  if version == False:
-    raise Exception("not installed")
-  print("tkdnd version: ", version)
+  assert dnd_installed() == "2.9.2"
