@@ -77,7 +77,11 @@ def dnd_install():
     import tarfile
     archive = tarfile.open(fileobj=io.BytesIO(data))
     archive.extractall(path=tcl_dir)
-
   print("tkdnd installed!")
-  
-  assert dnd_installed() == "2.9.2"
+
+if __name__ == "__main__":
+  min_version = "2.9.2"
+  version = dnd_installed()
+  if not version or version < min_version:
+    dnd_install()
+  assert dnd_installed() > "2.9.2"
