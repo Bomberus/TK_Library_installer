@@ -1,15 +1,17 @@
-sudo: required
+os:
+  - linux
+  - windows
+  - osx
 
 matrix:
   include:
-    - name: "Python 3.7.1 on Xenial Linux"
+    - name: "Python 3.7 on Ubuntu Bionic"
       language: shell
       dist: bionic
-      python: 3.7           # this works for Linux but is ignored on macOS or Windows
       before_install:
         - sudo apt-get install -qq xvfb python-tk
         - exec Xvfb :8 -screen 0 640x480x24 2>/tmp/Xvfb.log &
-      script: "DISPLAY=:8 sudo python install_tkdnd.py"
+      script: "DISPLAY=:8 sudo python3 install_tkdnd.py"
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
@@ -18,7 +20,7 @@ matrix:
       before_install: 
         - python3 --version ; pip3 --version ; sw_vers
       script: "sudo python3 install_tkdnd.py"
-    - name: "Python 3.7.4 on Windows"
+    - name: "Python 3.7.6 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
       # python: 3.7         # 'python:' is ignored on Travis CI Windows
