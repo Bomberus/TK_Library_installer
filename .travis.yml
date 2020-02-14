@@ -1,16 +1,14 @@
-language: python
-python:
-  - 3.7
+os:
+  - linux
 
-matrix:
+jobs:
   include:
     - os: linux
       name: Install on Linux
-      python:
-        - 3.7
+      python: 3.7
       install: ""
       script:
-        - sudo apt-get install xvfb python-tk
+        - sudo apt-get install xvfb python-tk python3
         - sudo exec Xvfb :8 -screen 0 640x480x24 2>/tmp/Xvfb.log &
-        - sudo python install_tkdnd.py
+        - sudo python3 install_tkdnd.py
       
