@@ -9,9 +9,10 @@ matrix:
   include:
     - os: linux
       name: Python
+      install: ""
       script:
-        - apt-get install xvfb python-tk
-        - exec Xvfb :8 -screen 0 640x480x24 2>/tmp/Xvfb.log &
+        - sudo apt-get install xvfb python-tk
+        - sudo exec Xvfb :8 -screen 0 640x480x24 2>/tmp/Xvfb.log &
         
 
 script: python install_tkdnd.py
