@@ -84,4 +84,4 @@ if __name__ == "__main__":
   version = dnd_installed()
   if not version or version < min_version:
     dnd_install()
-  assert dnd_installed() > "2.9.2"
+  assert dnd_installed() >= "2.9.2"
