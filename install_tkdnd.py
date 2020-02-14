@@ -79,3 +79,8 @@ def dnd_install():
     archive.extractall(path=tcl_dir)
 
   print("tkdnd installed!")
+  
+  version = dnd_installed()
+  if version == False:
+    raise Exception("not installed")
+  print("tkdnd version: ", version)
